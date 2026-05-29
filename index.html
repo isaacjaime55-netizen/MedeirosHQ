@@ -1,0 +1,1124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MedeirosHQ — Six ventures. One operator.</title>
+<meta name="description" content="Anthony Medeiros — Ontario-based portfolio operator. Six ventures covering protection, capital, real estate, markets, mobility, and community." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        obsidian: '#0A0A0B',
+        ink: '#13131A',
+        onyx: '#1C1C22',
+        gold: '#C9A961',
+        antique: '#8B7355',
+        pearl: '#EAEAEB',
+        smoke: '#8A8A8A',
+        hairline: 'rgba(201, 169, 97, 0.15)'
+      },
+      fontFamily: {
+        display: ['Montserrat', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        editorial: ['"Cormorant Garamond"', 'serif']
+      }
+    }
+  }
+}
+</script>
+<style>
+  :root {
+    --gold: #C9A961;
+    --antique: #8B7355;
+    --obsidian: #0A0A0B;
+    --ink: #13131A;
+    --onyx: #1C1C22;
+    --pearl: #EAEAEB;
+    --smoke: #8A8A8A;
+    --hairline: rgba(201, 169, 97, 0.15);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--obsidian);
+    color: var(--pearl);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .font-display { font-family: 'Montserrat', sans-serif; letter-spacing: -0.01em; }
+  .font-editorial { font-family: 'Cormorant Garamond', serif; }
+  .tracking-widest-plus { letter-spacing: 0.22em; }
+
+  /* Film grain overlay */
+  .grain::after {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* Hairline divider */
+  .hairline { background: var(--hairline); height: 1px; width: 100%; }
+  .hairline-v { background: var(--hairline); width: 1px; }
+
+  /* Gold gradient text */
+  .gold-text {
+    background: linear-gradient(135deg, #D9BC78 0%, #C9A961 50%, #A8884A 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Gradient border button */
+  .gbtn {
+    position: relative;
+    isolation: isolate;
+    transition: background 200ms ease, box-shadow 200ms ease, color 200ms ease;
+  }
+  .gbtn::before {
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #C9A961 0%, #8B7355 50%, #C9A961 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  .gbtn:hover {
+    background: rgba(201, 169, 97, 0.08);
+    box-shadow: 0 0 30px rgba(201, 169, 97, 0.2);
+  }
+
+  /* Gold filled CTA */
+  .gold-fill {
+    background: linear-gradient(180deg, #D6B774 0%, #C9A961 100%);
+    color: var(--obsidian);
+    transition: box-shadow 200ms ease, transform 200ms ease, background 200ms ease;
+  }
+  .gold-fill:hover {
+    box-shadow: 0 0 40px rgba(201, 169, 97, 0.35);
+    background: linear-gradient(180deg, #E4C684 0%, #D2B26A 100%);
+  }
+
+  /* Link hover */
+  .gold-link { color: var(--gold); transition: color 200ms ease; }
+  .gold-link:hover { color: var(--antique); }
+
+  /* Pillar cards spinning ring */
+  @keyframes spin-ring { to { transform: rotate(360deg); } }
+  .spin-ring { animation: spin-ring 1.4s linear infinite; }
+
+  /* Cascade animation */
+  @keyframes popup-card-in {
+    from { opacity: 0; transform: translateY(16px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .pillar-card {
+    opacity: 0;
+    animation: popup-card-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: transform, opacity;
+  }
+
+  /* Venture card reveal */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 700ms ease, transform 700ms ease; will-change: transform, opacity; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Hero video wrapper */
+  .hero-bg-wrap { will-change: transform; transform-origin: center center; }
+
+  /* Form */
+  .input {
+    background: rgba(28, 28, 34, 0.6);
+    border: 1px solid var(--hairline);
+    color: var(--pearl);
+    border-radius: 2px;
+    padding: 14px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    transition: border-color 200ms ease, background 200ms ease;
+    width: 100%;
+  }
+  .input:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(28, 28, 34, 0.85);
+  }
+  .input::placeholder { color: #5d5d63; }
+  select.input { appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%23C9A961' stroke-width='1.2' fill='none'/></svg>"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+
+  /* Number tag */
+  .num-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  /* Subtle stripe placeholder */
+  .stripe-placeholder {
+    background-image: repeating-linear-gradient(135deg, rgba(201,169,97,0.04) 0 12px, rgba(201,169,97,0) 12px 24px);
+    border: 1px solid var(--hairline);
+  }
+
+  /* Section padding */
+  .section { padding: 120px 0; }
+  @media (max-width: 768px) { .section { padding: 80px 0; } }
+
+  /* Eyebrow */
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--smoke);
+  }
+  .eyebrow .accent { color: var(--gold); }
+
+  /* Sticky nav backdrop */
+  .nav-blur {
+    background: rgba(10, 10, 11, 0.7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  /* Selection */
+  ::selection { background: rgba(201, 169, 97, 0.3); color: #fff; }
+
+  /* Underline animation on text links */
+  .ulink { position: relative; }
+  .ulink::after {
+    content: ""; position: absolute; left: 0; bottom: -3px; height: 1px; width: 100%;
+    background: var(--gold); transform: scaleX(0); transform-origin: right; transition: transform 350ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .ulink:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Pull quote rule */
+  .quote-rule::before {
+    content: ""; display: block; width: 48px; height: 1px; background: var(--gold);
+    margin: 0 auto 32px;
+  }
+
+
+  /* Marquee */
+  @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-track { animation: marquee-scroll 45s linear infinite; will-change: transform; }
+  .marquee-track:hover { animation-play-state: paused; }
+
+  /* Thesis section: portrait background, centered-copy composition */
+  .thesis-section {
+    position: relative;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(10, 10, 11, 0.25) 0%,
+        rgba(10, 10, 11, 0.6) 18%,
+        rgba(10, 10, 11, 0.85) 35%,
+        rgba(10, 10, 11, 0.88) 65%,
+        rgba(10, 10, 11, 0.6) 82%,
+        rgba(10, 10, 11, 0.25) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(10, 10, 11, 0.95) 0%,
+        rgba(10, 10, 11, 0.15) 18%,
+        rgba(10, 10, 11, 0.05) 50%,
+        rgba(10, 10, 11, 0.3) 82%,
+        rgba(10, 10, 11, 0.95) 100%
+      ),
+      url('assets/anthony-portrait-dark.jpg') center center / cover no-repeat;
+    border-top: 1px solid rgba(201, 169, 97, 0.2);
+    border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+  }
+  .thesis-copy { max-width: 620px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 768px) {
+    .thesis-section {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(10, 10, 11, 0.92) 0%,
+          rgba(10, 10, 11, 0.6) 30%,
+          rgba(10, 10, 11, 0.5) 60%,
+          rgba(10, 10, 11, 0.92) 100%
+        ),
+        url('assets/anthony-portrait-dark.jpg') center center / cover no-repeat;
+    }
+    .thesis-copy { max-width: 100%; }
+  }
+
+  /* Why Anthony section: phone portrait background, heavy dark treatment for bright source */
+  .why-cell {
+    background: rgba(10, 10, 11, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background 250ms ease;
+  }
+  .why-cell:hover { background: rgba(10, 10, 11, 0.72); }
+  .why-section {
+    position: relative;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(10, 10, 11, 0.96) 0%,
+        rgba(10, 10, 11, 0.88) 40%,
+        rgba(10, 10, 11, 0.7) 70%,
+        rgba(10, 10, 11, 0.55) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(10, 10, 11, 0.95) 0%,
+        rgba(10, 10, 11, 0.5) 20%,
+        rgba(10, 10, 11, 0.4) 60%,
+        rgba(10, 10, 11, 0.85) 95%
+      ),
+      url('assets/anthony-phone.jpg') 85% 25% / cover no-repeat;
+    border-top: 1px solid rgba(201, 169, 97, 0.2);
+    border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+  }
+  @media (max-width: 768px) {
+    .why-section {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(10, 10, 11, 0.96) 0%,
+          rgba(10, 10, 11, 0.78) 30%,
+          rgba(10, 10, 11, 0.7) 60%,
+          rgba(10, 10, 11, 0.96) 100%
+        ),
+        url('assets/anthony-phone.jpg') 70% 20% / cover no-repeat;
+    }
+  }
+
+  /* Closing section: desk portrait background, heavy dark treatment for bright source */
+  .closing-section {
+    position: relative;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(10, 10, 11, 1) 0%,
+        rgba(10, 10, 11, 0.78) 15%,
+        rgba(10, 10, 11, 0.55) 45%,
+        rgba(10, 10, 11, 0.78) 75%,
+        rgba(10, 10, 11, 1) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(10, 10, 11, 0.55) 0%,
+        rgba(10, 10, 11, 0.35) 50%,
+        rgba(10, 10, 11, 0.55) 100%
+      ),
+      url('assets/anthony-desk.jpg') center 30% / cover no-repeat;
+    border-top: 1px solid rgba(201, 169, 97, 0.2);
+    border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+  }
+  @media (max-width: 768px) {
+    .closing-section {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(10, 10, 11, 1) 0%,
+          rgba(10, 10, 11, 0.7) 20%,
+          rgba(10, 10, 11, 0.7) 80%,
+          rgba(10, 10, 11, 1) 100%
+        ),
+        url('assets/anthony-desk.jpg') center 25% / cover no-repeat;
+    }
+  }
+
+  /* Mobile: keep the hero video playing (muted inline autoplay), just disable the parallax scale for performance */
+  @media (max-width: 768px) {
+    .hero-bg-wrap { transform: none !important; }
+    .hero-video { display: block; object-position: 83% center; }
+    .hero-poster-mobile { display: none !important; }
+  }
+
+  /* Mobile nav menu */
+  #mobile-menu.open { max-height: 420px; border-top-color: var(--hairline); }
+  #menu-btn.open .menu-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  #menu-btn.open .menu-bar:nth-child(2) { opacity: 0; }
+  #menu-btn.open .menu-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  body.menu-open { overflow: hidden; }
+
+  /* Mobile spacing refinements */
+  @media (max-width: 640px) {
+    .venture-card { padding: 28px 24px !important; }
+    .why-cell { padding: 28px 24px !important; min-height: 0 !important; }
+    .hero-min { min-height: 0 !important; height: 100svh !important; }
+  }
+</style>
+</head>
+<body class="grain">
+
+<!-- ============ TOP BAR ============ -->
+<div class="w-full bg-black/60 border-b border-hairline relative z-50">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10 h-9 flex items-center justify-between text-[11px] tracking-widest-plus uppercase">
+    <div class="text-smoke flex items-center gap-3">
+      <span>Operator</span>
+      <span class="text-gold/40">·</span>
+      <span>Investor</span>
+      <span class="text-gold/40">·</span>
+      <span>Advisor</span>
+    </div>
+    <a href="#inquiry" class="gold-link ulink">Inquire →</a>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav id="nav" class="fixed top-9 left-0 right-0 z-50 nav-blur" data-screen-label="Nav">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10 h-16 md:h-[72px] flex items-center justify-between">
+    <a href="#top" class="font-display font-bold text-xl tracking-wide">
+      Medeiros<span class="gold-text">HQ</span>
+    </a>
+    <div class="hidden md:flex items-center gap-10 text-[13px] tracking-wider uppercase text-pearl/80">
+      <a href="#thesis" class="ulink hover:text-pearl">Thesis</a>
+      <a href="#ventures" class="ulink hover:text-pearl">Ventures</a>
+      <a href="#inquiry" class="ulink hover:text-pearl">Inquire</a>
+    </div>
+    <a href="#inquiry" class="hidden md:inline-flex gold-fill rounded-sm px-5 py-2.5 text-[12px] tracking-widest-plus uppercase font-display font-semibold">
+      Start an Inquiry
+    </a>
+    <!-- Mobile menu button -->
+    <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center gap-[5px] w-11 h-11 -mr-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="menu-bar block w-6 h-[1.5px] bg-pearl transition-all duration-300"></span>
+      <span class="menu-bar block w-6 h-[1.5px] bg-pearl transition-all duration-300"></span>
+      <span class="menu-bar block w-6 h-[1.5px] bg-pearl transition-all duration-300"></span>
+    </button>
+  </div>
+  <!-- Mobile dropdown panel -->
+  <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0 transition-all duration-300 ease-out border-t border-transparent" style="background: rgba(10,10,11,0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);">
+    <div class="px-6 py-6 flex flex-col gap-1">
+      <a href="#thesis" class="mobile-link py-3.5 text-[14px] tracking-widest-plus uppercase text-pearl/85 border-b border-hairline">Thesis</a>
+      <a href="#ventures" class="mobile-link py-3.5 text-[14px] tracking-widest-plus uppercase text-pearl/85 border-b border-hairline">Ventures</a>
+      <a href="#education" class="mobile-link py-3.5 text-[14px] tracking-widest-plus uppercase text-pearl/85 border-b border-hairline">Education</a>
+      <a href="#inquiry" class="mobile-link py-3.5 text-[14px] tracking-widest-plus uppercase text-pearl/85">Inquire</a>
+      <a href="#inquiry" class="mobile-link gold-fill rounded-sm mt-4 px-6 py-4 text-center text-[12px] tracking-widest-plus uppercase font-display font-semibold">
+        Start an Inquiry →
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="hero-min relative w-full" style="height: 100vh; min-height: 820px;" data-screen-label="Hero">
+  <!-- Background video/poster -->
+  <div class="hero-bg-wrap absolute inset-0 overflow-hidden">
+    <video class="hero-video absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline preload="auto" poster="assets/hero-background-poster.jpg">
+      <source src="assets/hero-background.mp4" type="video/mp4" />
+    </video>
+    <img src="assets/hero-background-poster.jpg" alt="" class="absolute inset-0 w-full h-full object-cover hero-poster-mobile" style="display:none;" />
+  </div>
+  <!-- Heavy overlay -->
+  <div class="absolute inset-0" style="background: rgba(10, 10, 11, 0.45);"></div>
+  <!-- Vignette / edge fade -->
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(10,10,11,0) 35%, rgba(10,10,11,0.6) 95%);"></div>
+  <!-- Bottom fade into next section -->
+  <div class="absolute inset-x-0 bottom-0 h-40 pointer-events-none" style="background: linear-gradient(to bottom, rgba(10,10,11,0), rgba(10,10,11,1));"></div>
+
+  <!-- Hero copy -->
+  <div id="hero-content" class="relative z-10 h-full max-w-[1400px] mx-auto px-6 lg:px-10 flex flex-col justify-center pt-24">
+    <div class="max-w-5xl">
+      <div class="flex items-center gap-4 mb-8 md:mb-12">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-60"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
+        </span>
+        <div class="eyebrow">
+          <span>Anthony Medeiros</span>
+          <span class="text-gold/40 mx-2">·</span>
+          <span>Ontario, Canada</span>
+          <span class="text-gold/40 mx-2">·</span>
+          <span class="accent">EST. MMXIV</span>
+        </div>
+      </div>
+
+      <h1 class="font-display font-bold text-pearl leading-[0.95] tracking-[-0.02em]"
+          style="font-size: clamp(48px, 7.5vw, 116px);">
+        Six ventures.<br/>
+        One <span class="font-editorial italic font-medium gold-text" style="font-weight: 500;">operator</span>.
+      </h1>
+
+      <div class="mt-8 md:mt-12 flex flex-col lg:flex-row lg:items-end gap-10 lg:gap-16">
+        <div class="flex-1 max-w-xl">
+          <div class="mb-6" style="width: 64px; height: 1px; background: var(--gold);"></div>
+          <p class="font-body text-pearl/80 leading-relaxed" style="font-size: clamp(16px, 1.15vw, 19px);">
+            The full wealth picture &mdash; <span class="text-pearl">protection, capital, deal flow, exit.</span> Most advisors see one slice. I run the businesses my clients invest in.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#inquiry" class="gold-fill rounded-sm px-7 py-4 text-[12px] tracking-widest-plus uppercase font-display font-semibold inline-flex items-center gap-3">
+            Start an Inquiry <span aria-hidden>→</span>
+          </a>
+          <a href="#ventures" class="gbtn rounded-sm px-7 py-4 text-[12px] tracking-widest-plus uppercase font-display font-semibold text-pearl inline-flex items-center gap-3">
+            See the Ventures <span aria-hidden class="text-gold">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right side rail: venture index -->
+  <div class="hidden xl:flex absolute top-0 right-8 h-full z-10 flex-col justify-center items-end gap-5 pointer-events-none">
+    <div class="eyebrow text-pearl/40 mb-2" style="writing-mode: vertical-rl; transform: rotate(180deg);">Operating Index</div>
+    <div class="flex flex-col gap-3 items-end">
+      <div class="flex items-center gap-3 text-[11px] tracking-widest-plus uppercase text-pearl/70"><span class="num-tag">01</span><span>Protection</span><span class="w-6 h-px bg-gold/40"></span></div>
+      <div class="flex items-center gap-3 text-[11px] tracking-widest-plus uppercase text-pearl/70"><span class="num-tag">02</span><span>Capital</span><span class="w-6 h-px bg-gold/40"></span></div>
+      <div class="flex items-center gap-3 text-[11px] tracking-widest-plus uppercase text-pearl/70"><span class="num-tag">03</span><span>Real Estate</span><span class="w-6 h-px bg-gold/40"></span></div>
+      <div class="flex items-center gap-3 text-[11px] tracking-widest-plus uppercase text-pearl/70"><span class="num-tag">04</span><span>Markets</span><span class="w-6 h-px bg-gold/40"></span></div>
+      <div class="flex items-center gap-3 text-[11px] tracking-widest-plus uppercase text-pearl/70"><span class="num-tag">05</span><span>Mobility</span><span class="w-6 h-px bg-gold/40"></span></div>
+      <div class="flex items-center gap-3 text-[11px] tracking-widest-plus uppercase text-pearl/70"><span class="num-tag">06</span><span>Community</span><span class="w-6 h-px bg-gold/40"></span></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ MARQUEE TICKER ============ -->
+<section class="relative w-full bg-obsidian border-y border-hairline overflow-hidden" data-screen-label="Ticker">
+  <div class="marquee-track flex items-center gap-12 py-5 whitespace-nowrap font-display text-[13px] tracking-widest-plus uppercase text-pearl/70">
+    <!-- duplicated for seamless loop -->
+    <span class="flex items-center gap-12">
+      <span class="flex items-center gap-3"><span class="num-tag">01</span><span>Protection</span><span class="text-gold">·</span><span class="text-pearl/40">Tempo Life</span></span>
+      <span class="text-gold/30">/</span>
+      <span class="flex items-center gap-3"><span class="num-tag">02</span><span>Capital</span><span class="text-gold">·</span><span class="text-pearl/40">Tempo Innovations</span></span>
+      <span class="text-gold/30">/</span>
+      <span class="flex items-center gap-3"><span class="num-tag">03</span><span>Real Estate</span><span class="text-gold">·</span><span class="text-pearl/40">AC PRIME Ventures</span></span>
+      <span class="text-gold/30">/</span>
+      <span class="flex items-center gap-3"><span class="num-tag">04</span><span>Markets</span><span class="text-gold">·</span><span class="text-pearl/40">Tempo Exchanges</span></span>
+      <span class="text-gold/30">/</span>
+      <span class="flex items-center gap-3"><span class="num-tag">05</span><span>Mobility</span><span class="text-gold">·</span><span class="text-pearl/40">Hyperlane Club</span></span>
+      <span class="text-gold/30">/</span>
+      <span class="flex items-center gap-3"><span class="num-tag">06</span><span>Community</span><span class="text-gold">·</span><span class="text-pearl/40">Syndicate Club</span></span>
+      <span class="text-gold/30">/</span>
+    </span>
+    <span class="flex items-center gap-12" aria-hidden="true">
+      <span class="flex items-center gap-3"><span class="num-tag">01</span><span>Protection</span><span class="text-gold">·</span><span class="text-pearl/40">Tempo Life</span></span>
+      <span class="text-gold/30">/</span>
+      <span class="flex items-center gap-3"><span class="num-tag">02</span><span>Capital</span><span class="text-gold">·</span><span class="text-pearl/40">Tempo Innovations</span></span>
+      <span class="text-gold/30">/</span>
+      <span class="flex items-center gap-3"><span class="num-tag">03</span><span>Real Estate</span><span class="text-gold">·</span><span class="text-pearl/40">AC PRIME Ventures</span></span>
+      <span class="text-gold/30">/</span>
+      <span class="flex items-center gap-3"><span class="num-tag">04</span><span>Markets</span><span class="text-gold">·</span><span class="text-pearl/40">Tempo Exchanges</span></span>
+      <span class="text-gold/30">/</span>
+      <span class="flex items-center gap-3"><span class="num-tag">05</span><span>Mobility</span><span class="text-gold">·</span><span class="text-pearl/40">Hyperlane Club</span></span>
+      <span class="text-gold/30">/</span>
+      <span class="flex items-center gap-3"><span class="num-tag">06</span><span>Community</span><span class="text-gold">·</span><span class="text-pearl/40">Syndicate Club</span></span>
+      <span class="text-gold/30">/</span>
+    </span>
+  </div>
+</section>
+
+<!-- ============ STATS STRIP ============ -->
+<section class="relative w-full" data-screen-label="Stats">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+    <div class="hairline"></div>
+    <div id="stats" class="grid grid-cols-2 md:grid-cols-4 py-16 md:py-20 gap-y-12">
+      <div class="text-center px-6">
+        <div class="font-display font-bold text-pearl leading-none" style="font-size: clamp(40px, 4.8vw, 64px);">
+          <span>$</span><span class="stat-num" data-target="50" data-suffix="">0</span><span class="text-gold">M+</span>
+        </div>
+        <div class="eyebrow mt-5">Generated</div>
+      </div>
+      <div class="text-center px-6 md:border-l border-hairline">
+        <div class="font-display font-bold text-pearl leading-none" style="font-size: clamp(40px, 4.8vw, 64px);">
+          <span class="stat-num" data-target="6">0</span>
+        </div>
+        <div class="eyebrow mt-5">Active Ventures</div>
+      </div>
+      <div class="text-center px-6 md:border-l border-hairline">
+        <div class="font-display font-bold text-pearl leading-none" style="font-size: clamp(40px, 4.8vw, 64px);">
+          <span class="stat-num" data-target="10">0</span><span class="text-gold">+</span>
+        </div>
+        <div class="eyebrow mt-5">Years Operating</div>
+      </div>
+      <div class="text-center px-6 md:border-l border-hairline">
+        <div class="font-display font-bold text-pearl leading-none" style="font-size: clamp(40px, 4.8vw, 64px);">
+          <span class="stat-num" data-target="500">0</span><span class="text-gold">+</span>
+        </div>
+        <div class="eyebrow mt-5">Clients Served</div>
+      </div>
+    </div>
+    <div class="hairline"></div>
+  </div>
+</section>
+
+<!-- ============ THESIS ============ -->
+<section id="thesis" class="thesis-section relative" data-screen-label="Thesis">
+  <div class="thesis-grid max-w-[1400px] mx-auto px-6 lg:px-10 py-32 md:py-40">
+    <div id="thesis-anim" class="thesis-copy text-center">
+      <div class="eyebrow mb-8"><span class="accent">·</span> The Thesis</div>
+      <h2 class="font-display font-bold text-pearl leading-[1.05] tracking-tight"
+          style="font-size: clamp(34px, 4.2vw, 60px);">
+        Wealth isn't one move.<br/>
+        It's a <span class="gold-text italic font-editorial font-medium">system</span>.
+      </h2>
+
+      <div class="mt-12 space-y-6 text-pearl/85 font-body leading-relaxed text-left" style="font-size: 17px;">
+        <p>
+          Most operators are good at one thing. Most advisors only see one thing. That's why most wealth stalls between <span class="text-pearl">$1M and $10M</span> &mdash; the strategy worked to get there, and there's no one to architect what's next.
+        </p>
+        <p>
+          I've built six ventures because the wealth picture has six dimensions. Income you can't outwork. Capital that compounds without you. Real estate that holds through cycles. Markets when you want exposure. Rooms where deals actually move. And the protection that holds it all together when something breaks.
+        </p>
+      </div>
+
+      <div class="mt-10">
+        <p class="text-pearl/60 text-[13px] tracking-widest-plus uppercase">One operator. Six ventures. The full picture.</p>
+      </div>
+
+      <!-- Pull quote card -->
+      <div class="mt-16 px-8 py-12 quote-rule" style="border: 1px solid var(--hairline); background: rgba(10, 10, 11, 0.65); backdrop-filter: blur(8px);">
+        <p class="font-editorial italic gold-text leading-tight" style="font-size: clamp(22px, 2.4vw, 30px);">
+          "I run the businesses my clients invest in. That's not marketing. That's the model."
+        </p>
+        <div class="mt-6 eyebrow"><span class="accent">—</span> Anthony Medeiros</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VENTURES ============ -->
+<section id="ventures" class="section bg-ink relative" data-screen-label="Ventures">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+    <div class="text-center mb-20">
+      <div class="eyebrow mb-6"><span class="accent">·</span> The Portfolio</div>
+      <h2 class="font-display font-bold text-pearl leading-[1.05] tracking-tight"
+          style="font-size: clamp(36px, 4.8vw, 64px);">
+        Six rooms. <span class="gold-text">One door.</span>
+      </h2>
+      <p class="mt-6 text-pearl/70 max-w-2xl mx-auto" style="font-size: 17px;">
+        Each venture stands alone. Together, they're the operating system for serious wealth.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-hairline border border-hairline">
+      <!-- 01 -->
+      <article class="reveal venture-card flex flex-col bg-onyx p-10 group relative" style="transition-delay: 0ms;">
+        <div class="flex items-baseline justify-between mb-10">
+          <div class="num-tag text-[14px]">01 · Protection</div>
+          <div class="text-[10px] tracking-widest-plus uppercase text-smoke">Tempo Life</div>
+        </div>
+        <div class="hairline mb-6"></div>
+        <h3 class="font-display font-bold text-pearl text-[26px] leading-tight mb-5">Tempo Life</h3>
+        <p class="text-pearl/70 leading-relaxed text-[15px] mb-8 flex-1">
+          Income protection, wealth transfer, and tax-advantaged structures built for business owners and families with real net worth. Includes <span class="text-pearl">The Investing Blueprint</span> — Anthony's $997 self-paced course for those who want the framework before the conversation.
+        </p>
+        <div class="flex flex-col gap-2.5 mb-6">
+          <a href="#inquiry" class="gold-link text-[14px] inline-flex items-center gap-2 ulink w-fit">→ Book a consult</a>
+          <a href="#education" class="gold-link text-[14px] inline-flex items-center gap-2 ulink w-fit">→ Get the course — $997</a>
+        </div>
+        <div class="text-[11px] tracking-widest-plus uppercase text-smoke pt-4 border-t border-hairline">
+          Ontario-licensed advisory · FSRA regulated
+        </div>
+      </article>
+
+      <!-- 02 -->
+      <article class="reveal venture-card flex flex-col bg-onyx p-10 group" style="transition-delay: 80ms;">
+        <div class="flex items-baseline justify-between mb-10">
+          <div class="num-tag text-[14px]">02 · Capital</div>
+          <div class="text-[10px] tracking-widest-plus uppercase text-smoke">Investor Relations</div>
+        </div>
+        <div class="hairline mb-6"></div>
+        <h3 class="font-display font-bold text-pearl text-[26px] leading-tight mb-5">Tempo Innovations Inc.</h3>
+        <p class="text-pearl/70 leading-relaxed text-[15px] mb-8 flex-1">
+          Investor and partner relations across the portfolio. If you have capital to deploy and want operator-led deals instead of pitch decks from strangers, this is the entry point.
+        </p>
+        <div class="flex flex-col gap-2.5">
+          <a href="#inquiry" class="gold-link text-[14px] inline-flex items-center gap-2 ulink w-fit">→ Request the deal flow brief</a>
+        </div>
+      </article>
+
+      <!-- 03 -->
+      <article class="reveal venture-card flex flex-col bg-onyx p-10 group" style="transition-delay: 160ms;">
+        <div class="flex items-baseline justify-between mb-10">
+          <div class="num-tag text-[14px]">03 · Real Estate</div>
+          <div class="text-[10px] tracking-widest-plus uppercase text-smoke">Dev & Acquisition</div>
+        </div>
+        <div class="hairline mb-6"></div>
+        <h3 class="font-display font-bold text-pearl text-[26px] leading-tight mb-5">AC PRIME Ventures Inc.</h3>
+        <p class="text-pearl/70 leading-relaxed text-[15px] mb-8 flex-1">
+          Development and acquisition. Long-horizon properties, structured for tax efficiency and generational hold. LP and co-GP partnerships considered case by case.
+        </p>
+        <div class="flex flex-col gap-2.5">
+          <a href="#inquiry" class="gold-link text-[14px] inline-flex items-center gap-2 ulink w-fit">→ Inquire about current projects</a>
+        </div>
+      </article>
+
+      <!-- 04 -->
+      <article class="reveal venture-card flex flex-col bg-onyx p-10 group" style="transition-delay: 0ms;">
+        <div class="flex items-baseline justify-between mb-10">
+          <div class="num-tag text-[14px]">04 · Markets</div>
+          <div class="text-[10px] tracking-widest-plus uppercase text-smoke">Trading Ops</div>
+        </div>
+        <div class="hairline mb-6"></div>
+        <h3 class="font-display font-bold text-pearl text-[26px] leading-tight mb-5">Tempo Exchanges</h3>
+        <p class="text-pearl/70 leading-relaxed text-[15px] mb-8 flex-1">
+          Trading operations and infrastructure for active market participation. For operators who want exposure but need the back-end handled.
+        </p>
+        <div class="flex flex-col gap-2.5">
+          <a href="#inquiry" class="gold-link text-[14px] inline-flex items-center gap-2 ulink w-fit">→ Request access</a>
+        </div>
+      </article>
+
+      <!-- 05 -->
+      <article class="reveal venture-card flex flex-col bg-onyx p-10 group" style="transition-delay: 80ms;">
+        <div class="flex items-baseline justify-between mb-10">
+          <div class="num-tag text-[14px]">05 · Mobility</div>
+          <div class="text-[10px] tracking-widest-plus uppercase text-smoke">Membership</div>
+        </div>
+        <div class="hairline mb-6"></div>
+        <h3 class="font-display font-bold text-pearl text-[26px] leading-tight mb-5">Hyperlane Club</h3>
+        <p class="text-pearl/70 leading-relaxed text-[15px] mb-8 flex-1">
+          Premium vehicle access. Membership and rental for clients who'd rather have the keys than the depreciation.
+        </p>
+        <div class="flex flex-col gap-2.5">
+          <a href="#inquiry" class="gold-link text-[14px] inline-flex items-center gap-2 ulink w-fit">→ See the fleet</a>
+        </div>
+      </article>
+
+      <!-- 06 -->
+      <article class="reveal venture-card flex flex-col bg-onyx p-10 group" style="transition-delay: 160ms;">
+        <div class="flex items-baseline justify-between mb-10">
+          <div class="num-tag text-[14px]">06 · Community</div>
+          <div class="text-[10px] tracking-widest-plus uppercase text-smoke">Invite Only</div>
+        </div>
+        <div class="hairline mb-6"></div>
+        <h3 class="font-display font-bold text-pearl text-[26px] leading-tight mb-5">Syndicate Club</h3>
+        <p class="text-pearl/70 leading-relaxed text-[15px] mb-8 flex-1">
+          Private mastermind. Operators only. Deals, capital, and relationships move in this room. Invite-only, application required.
+        </p>
+        <div class="flex flex-col gap-2.5">
+          <a href="#inquiry" class="gold-link text-[14px] inline-flex items-center gap-2 ulink w-fit">→ Apply for membership</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY ANTHONY ============ -->
+<section class="why-section section relative" data-screen-label="WhyAnthony">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+    <div class="text-center mb-20">
+      <div class="eyebrow mb-6"><span class="accent">·</span> The Difference</div>
+      <h2 class="font-display font-bold text-pearl leading-[1.05] tracking-tight"
+          style="font-size: clamp(34px, 4.4vw, 58px);">
+        Six reasons to start with <span class="gold-text">one operator.</span>
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-hairline border border-hairline">
+      <div class="reveal why-cell p-10 md:p-12 min-h-[200px] flex flex-col justify-between" style="transition-delay:0ms;">
+        <div class="num-tag text-[13px]">01</div>
+        <p class="font-display font-semibold text-pearl text-[22px] leading-tight">I run the businesses my clients invest in.</p>
+      </div>
+      <div class="reveal why-cell p-10 md:p-12 min-h-[200px] flex flex-col justify-between" style="transition-delay:60ms;">
+        <div class="num-tag text-[13px]">02</div>
+        <p class="font-display font-semibold text-pearl text-[22px] leading-tight">Ontario-licensed for protection and wealth transfer.</p>
+      </div>
+      <div class="reveal why-cell p-10 md:p-12 min-h-[200px] flex flex-col justify-between" style="transition-delay:120ms;">
+        <div class="num-tag text-[13px]">03</div>
+        <p class="font-display font-semibold text-pearl text-[22px] leading-tight"><span class="gold-text">$50M+</span> moved across six active ventures.</p>
+      </div>
+      <div class="reveal why-cell p-10 md:p-12 min-h-[200px] flex flex-col justify-between" style="transition-delay:0ms;">
+        <div class="num-tag text-[13px]">04</div>
+        <p class="font-display font-semibold text-pearl text-[22px] leading-tight">One relationship covers six wealth dimensions.</p>
+      </div>
+      <div class="reveal why-cell p-10 md:p-12 min-h-[200px] flex flex-col justify-between" style="transition-delay:60ms;">
+        <div class="num-tag text-[13px]">05</div>
+        <p class="font-display font-semibold text-pearl text-[22px] leading-tight">Operator pricing. No retail markup, no commission games.</p>
+      </div>
+      <div class="reveal why-cell p-10 md:p-12 min-h-[200px] flex flex-col justify-between" style="transition-delay:120ms;">
+        <div class="num-tag text-[13px]">06</div>
+        <p class="font-display font-semibold text-pearl text-[22px] leading-tight">Every introduction is qualified. Every inquiry gets routed correctly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section id="education" class="section bg-ink relative" data-screen-label="Education">
+  <div class="max-w-[1200px] mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+      <div class="lg:col-span-7">
+        <div class="eyebrow mb-6"><span class="accent">·</span> Tempo Life <span class="text-gold/40 mx-1">·</span> Education</div>
+        <h2 class="font-display font-bold text-pearl leading-[1.05] tracking-tight mb-8"
+            style="font-size: clamp(34px, 4.2vw, 56px);">
+          Start with the <span class="gold-text italic font-editorial font-medium">blueprint.</span>
+        </h2>
+        <p class="text-pearl/75 leading-relaxed text-[17px] mb-5">
+          Not ready for a consult? Start with <span class="text-pearl">The Investing Blueprint</span>. A $997 self-paced course covering the fundamentals, strategy, and mindset behind every wealth conversation I have with private clients.
+        </p>
+        <p class="text-pearl/60 text-[15px] leading-relaxed mb-10">
+          Built for people who want the framework before the meeting.
+        </p>
+        <a href="https://whop.com/joined/millionaires-creed/products/investing-basics-ae/" target="_blank" rel="noopener" class="gold-fill rounded-sm px-7 py-4 text-[12px] tracking-widest-plus uppercase font-display font-semibold inline-flex items-center gap-3">
+          Get the Blueprint <span aria-hidden>→</span>
+        </a>
+      </div>
+
+      <div class="lg:col-span-5">
+        <!-- Course card -->
+        <div class="relative aspect-[4/5] p-10 flex flex-col justify-between" style="border: 1px solid var(--hairline); background: linear-gradient(180deg, #1C1C22 0%, #13131A 100%);">
+          <!-- corner marks -->
+          <span class="absolute top-3 left-3 w-3 h-3 border-l border-t border-gold/50"></span>
+          <span class="absolute top-3 right-3 w-3 h-3 border-r border-t border-gold/50"></span>
+          <span class="absolute bottom-3 left-3 w-3 h-3 border-l border-b border-gold/50"></span>
+          <span class="absolute bottom-3 right-3 w-3 h-3 border-r border-b border-gold/50"></span>
+
+          <div>
+            <div class="eyebrow"><span class="accent">·</span> Tempo Life</div>
+            <div class="mt-4 font-display font-semibold text-pearl text-[28px] leading-tight">The Investing<br/>Blueprint</div>
+          </div>
+
+          <!-- Geometric gold mark -->
+          <div class="flex items-center justify-center py-10">
+            <div class="relative w-40 h-40">
+              <div class="absolute inset-0 border border-gold/40" style="transform: rotate(45deg);"></div>
+              <div class="absolute inset-4 border border-gold/30 rounded-full"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="font-editorial italic gold-text text-[44px] leading-none">IB</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="hairline"></div>
+            <div class="flex items-end justify-between">
+              <div>
+                <div class="font-display font-bold text-pearl leading-none" style="font-size: 44px;">
+                  <span class="text-gold">$</span>997
+                </div>
+                <div class="eyebrow mt-3">Lifetime access</div>
+              </div>
+              <div class="text-right eyebrow">Self-paced</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INQUIRY ============ -->
+<section id="inquiry" class="section relative" data-screen-label="Inquiry">
+  <div class="max-w-[1200px] mx-auto px-6 lg:px-10">
+    <div class="text-center mb-16">
+      <div class="eyebrow mb-6"><span class="accent">·</span> Start an Inquiry</div>
+      <h2 class="font-display font-bold text-pearl leading-[1.05] tracking-tight max-w-3xl mx-auto"
+          style="font-size: clamp(34px, 4.2vw, 56px);">
+        Tell me which <span class="gold-text">room</span> you're walking into.
+      </h2>
+      <p class="mt-6 text-pearl/70 max-w-2xl mx-auto" style="font-size: 17px;">
+        Inquiries are routed by venture. The more specific you are, the faster the right conversation happens.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-10">
+      <!-- Form -->
+      <form id="inquiry-form" action="https://formsubmit.co/anthony@tempoinnovations.com" method="POST" class="lg:col-span-7 p-6 sm:p-8 lg:p-12 space-y-5" style="border: 1px solid var(--hairline); background: rgba(28,28,34,0.4);">
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="New MedeirosHQ inquiry" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" id="form-next" value="" />
+        <!-- honeypot: bots fill this, humans don't -->
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
+
+        <div id="form-success" class="hidden p-5 mb-1" style="border:1px solid var(--gold); background: rgba(201,169,97,0.08);">
+          <div class="eyebrow mb-1"><span class="accent">✓</span> Inquiry received</div>
+          <p class="text-pearl/80 text-[14px] leading-relaxed">Thank you — your inquiry is in. Anthony's team typically replies within one business day.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="eyebrow block mb-2">Name</label>
+            <input class="input" name="Name" type="text" placeholder="Your full name" required />
+          </div>
+          <div>
+            <label class="eyebrow block mb-2">Email</label>
+            <input class="input" name="Email" type="email" placeholder="you@domain.com" required />
+          </div>
+        </div>
+        <div>
+          <label class="eyebrow block mb-2">Phone <span class="text-smoke/60 normal-case tracking-normal">(optional)</span></label>
+          <input class="input" name="Phone" type="tel" placeholder="+1 (000) 000-0000" />
+        </div>
+        <div>
+          <label class="eyebrow block mb-2">Which venture?</label>
+          <select class="input" name="Venture" required>
+            <option value="">Select a venture…</option>
+            <option>Tempo Life — Protection & Wealth Transfer</option>
+            <option>Tempo Innovations — Capital</option>
+            <option>AC PRIME Ventures — Real Estate</option>
+            <option>Tempo Exchanges — Markets</option>
+            <option>Hyperlane Club — Mobility</option>
+            <option>Syndicate Club — Community</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div>
+          <label class="eyebrow block mb-2">Capital range / engagement size <span class="text-smoke/60 normal-case tracking-normal">(optional)</span></label>
+          <select class="input" name="Capital range">
+            <option value="">Prefer not to say</option>
+            <option>Under $100K</option>
+            <option>$100K – $500K</option>
+            <option>$500K – $2M</option>
+            <option>$2M+</option>
+          </select>
+        </div>
+        <div>
+          <label class="eyebrow block mb-2">What are you looking for?</label>
+          <textarea class="input" name="Message" rows="5" placeholder="A sentence or two is enough. Specifics route faster."></textarea>
+        </div>
+        <div class="pt-2 flex items-center justify-between gap-4 flex-wrap">
+          <p class="text-smoke text-[12px] max-w-sm leading-relaxed">By submitting, you consent to be contacted regarding your inquiry. Replies typically within one business day.</p>
+          <button type="submit" class="gold-fill rounded-sm px-7 py-4 text-[12px] tracking-widest-plus uppercase font-display font-semibold inline-flex items-center gap-3">
+            Submit Inquiry <span aria-hidden>→</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Side: contact cards + GHL slot -->
+      <aside class="lg:col-span-5 flex flex-col gap-5">
+        <a href="mailto:anthony@tempoinnovations.com" class="block p-6 group" style="border: 1px solid var(--hairline);">
+          <div class="eyebrow mb-3"><span class="accent">·</span> Email</div>
+          <div class="font-display text-pearl text-[18px] gold-link group-hover:text-antique">anthony@tempoinnovations.com</div>
+        </a>
+        <a href="tel:+10000000000" class="block p-6 group" style="border: 1px solid var(--hairline);">
+          <div class="eyebrow mb-3"><span class="accent">·</span> Phone</div>
+          <div class="font-display text-pearl text-[18px] gold-link group-hover:text-antique">Schedule a call →</div>
+        </a>
+        <a href="#" class="block p-6 group" style="border: 1px solid var(--hairline);">
+          <div class="eyebrow mb-3"><span class="accent">·</span> WhatsApp</div>
+          <div class="font-display text-pearl text-[18px] gold-link group-hover:text-antique">Message Anthony →</div>
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="closing-section section relative overflow-hidden" data-screen-label="Closing">
+  <!-- Background ornament -->
+  <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.06]">
+    <div class="w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] border border-gold rounded-full"></div>
+  </div>
+  <div class="relative max-w-[1200px] mx-auto px-6 lg:px-10 text-center">
+    <div class="eyebrow mb-8"><span class="accent">·</span> One conversation</div>
+    <h2 class="font-display font-bold text-pearl leading-[1.05] tracking-tight max-w-4xl mx-auto"
+        style="font-size: clamp(38px, 5vw, 72px);">
+      Six ventures. One operator.<br/>
+      <span class="gold-text">One conversation</span> starts it.
+    </h2>
+    <div class="mt-14">
+      <a href="#inquiry" class="gold-fill rounded-sm px-10 py-5 text-[13px] tracking-widest-plus uppercase font-display font-semibold inline-flex items-center gap-4">
+        Start an Inquiry <span aria-hidden>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="relative bg-obsidian pt-24 pb-10" data-screen-label="Footer">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+    <div class="grid md:grid-cols-3 gap-12 pb-16">
+      <div>
+        <div class="font-display font-bold text-2xl tracking-wide mb-5">Medeiros<span class="gold-text">HQ</span></div>
+        <p class="text-pearl/70 leading-relaxed text-[15px] max-w-sm">One operator running six ventures. Built for the wealth picture beyond a single advisor.</p>
+        <p class="mt-6 text-[11px] tracking-widest-plus uppercase text-smoke">Ontario-licensed advisory · FSRA regulated</p>
+      </div>
+      <div>
+        <div class="eyebrow mb-6"><span class="accent">·</span> Ventures</div>
+        <ul class="space-y-3 text-pearl/80 text-[15px]">
+          <li><a href="#ventures" class="ulink hover:text-pearl">Tempo Life — Protection</a></li>
+          <li><a href="#ventures" class="ulink hover:text-pearl">Tempo Innovations — Capital</a></li>
+          <li><a href="#ventures" class="ulink hover:text-pearl">AC PRIME Ventures — Real Estate</a></li>
+          <li><a href="#ventures" class="ulink hover:text-pearl">Tempo Exchanges — Markets</a></li>
+          <li><a href="#ventures" class="ulink hover:text-pearl">Hyperlane Club — Mobility</a></li>
+          <li><a href="#ventures" class="ulink hover:text-pearl">Syndicate Club — Community</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow mb-6"><span class="accent">·</span> Contact</div>
+        <ul class="space-y-3 text-pearl/80 text-[15px]">
+          <li><a href="mailto:anthony@tempoinnovations.com" class="gold-link ulink">anthony@tempoinnovations.com</a></li>
+          <li><a href="tel:+10000000000" class="ulink hover:text-pearl">Phone — schedule a call</a></li>
+          <li><a href="#inquiry" class="gold-link ulink">Start an inquiry →</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hairline mb-8"></div>
+
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-[11px] tracking-widest-plus uppercase text-smoke">
+      <div>© <span id="year">2026</span> MedeirosHQ · All rights reserved</div>
+      <div class="space-x-6">
+        <a href="#" class="ulink hover:text-pearl">Privacy</a>
+        <a href="#" class="ulink hover:text-pearl">Terms</a>
+        <a href="#" class="ulink hover:text-pearl">Disclosures</a>
+      </div>
+    </div>
+
+    <p class="mt-8 text-[11px] leading-relaxed text-smoke/80 max-w-4xl">
+      Insurance and segregated funds products are offered through Tempo Life, licensed in Ontario and regulated by the Financial Services Regulatory Authority of Ontario (FSRA). Information on this site is for educational purposes and is not investment, tax, or legal advice. Past performance is not indicative of future results. Investments involve risk including loss of principal.
+    </p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---------- mobile nav menu ----------
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn && mobileMenu) {
+    const closeMenu = () => {
+      menuBtn.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    };
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuBtn.classList.toggle('open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      document.body.classList.toggle('menu-open', isOpen);
+    });
+    mobileMenu.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', closeMenu));
+  }
+
+  // ---------- scroll progress ----------
+  let scrollProgress = 0;
+  let rafId = null;
+  const heroBg = document.querySelector('.hero-bg-wrap');
+  const heroContent = document.getElementById('hero-content');
+  const thesisAnim = document.getElementById('thesis-anim');
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+  function update() {
+    rafId = null;
+    const vh = window.innerHeight || 1;
+    scrollProgress = Math.min(window.scrollY / vh, 1);
+
+    // Hero bg scale-in (desktop only)
+    if (heroBg && !isMobile) {
+      heroBg.style.transform = `scale(${1 + scrollProgress * 0.3})`;
+    }
+
+    // Hero copy parallax
+    if (heroContent) {
+      const op = Math.max(1 - scrollProgress * 2.5, 0);
+      heroContent.style.opacity = op;
+      heroContent.style.transform = `translateY(${scrollProgress * -60}px)`;
+      heroContent.style.pointerEvents = op < 0.1 ? 'none' : '';
+    }
+
+    // Thesis reveal driven by full doc scroll, not hero progress
+    if (thesisAnim) {
+      const rect = thesisAnim.getBoundingClientRect();
+      const winH = window.innerHeight;
+      // 0 when far below viewport, 1 when fully revealed
+      const start = winH * 0.95;
+      const end = winH * 0.25;
+      const raw = (start - rect.top) / (start - end);
+      const t = Math.max(0, Math.min(1, raw));
+      thesisAnim.style.opacity = t;
+      thesisAnim.style.transform = `scale(${0.92 + t * 0.08})`;
+      thesisAnim.style.transformOrigin = 'center top';
+    }
+  }
+
+  function onScroll() {
+    if (rafId == null) rafId = requestAnimationFrame(update);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+
+  // ---------- IntersectionObserver: stat count-up ----------
+  const statsSection = document.getElementById('stats');
+  if (statsSection && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const nums = statsSection.querySelectorAll('.stat-num');
+          nums.forEach(n => {
+            const target = parseFloat(n.dataset.target);
+            const dur = 1200;
+            const start = performance.now();
+            function step(t) {
+              const k = Math.min((t - start) / dur, 1);
+              const eased = 1 - Math.pow(1 - k, 3); // ease-out cubic
+              const val = Math.floor(eased * target);
+              n.textContent = val.toLocaleString();
+              if (k < 1) requestAnimationFrame(step);
+              else n.textContent = target.toLocaleString();
+            }
+            requestAnimationFrame(step);
+          });
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    io.observe(statsSection);
+  }
+
+  // ---------- IntersectionObserver: reveals ----------
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  // ---------- Inquiry form: native POST to FormSubmit (no backend, no CORS) ----------
+  const inquiryForm = document.getElementById('inquiry-form');
+  if (inquiryForm) {
+    // After a successful send, FormSubmit redirects back here with ?sent=1
+    const pageUrl = location.origin + location.pathname;
+    const nextField = document.getElementById('form-next');
+    if (nextField) nextField.value = pageUrl + '?sent=1#inquiry';
+
+    // Returning from a successful submission?
+    if (new URLSearchParams(location.search).has('sent')) {
+      const success = document.getElementById('form-success');
+      if (success) success.classList.remove('hidden');
+      // jump to the form so the confirmation is visible
+      const target = document.getElementById('inquiry');
+      if (target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'instant' in window ? 'instant' : 'auto' });
+      // clean the URL so a refresh doesn't re-show the banner
+      history.replaceState(null, '', pageUrl + '#inquiry');
+    }
+
+    // Friendly "Sending…" state on submit (the browser then navigates to FormSubmit)
+    inquiryForm.addEventListener('submit', () => {
+      const btn = inquiryForm.querySelector('button[type=submit]');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
