@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Book a Call — Anthony Medeiros · MedeirosHQ</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
+<meta name="description" content="Book a 30-minute call with Anthony Medeiros — Ontario-based portfolio operator. One conversation across protection, capital, real estate, markets, and partnerships." />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="MedeirosHQ" />
+<meta property="og:title" content="Book a Call — Anthony Medeiros" />
+<meta property="og:description" content="Reserve a 30-minute call with Anthony Medeiros. One conversation, the full wealth picture." />
+<meta property="og:url" content="https://medeiroshq.com/book" />
+<meta property="og:image" content="https://medeiroshq.com/assets/social-preview.jpg" />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="617" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        obsidian: '#0A0A0B',
+        ink: '#13131A',
+        onyx: '#1C1C22',
+        gold: '#C9A961',
+        antique: '#8B7355',
+        pearl: '#EAEAEB',
+        smoke: '#8A8A8A',
+        hairline: 'rgba(201, 169, 97, 0.15)'
+      },
+      fontFamily: {
+        display: ['Montserrat', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        editorial: ['"Cormorant Garamond"', 'serif']
+      }
+    }
+  }
+}
+</script>
+<style>
+  :root {
+    --gold: #C9A961;
+    --antique: #8B7355;
+    --obsidian: #0A0A0B;
+    --ink: #13131A;
+    --onyx: #1C1C22;
+    --pearl: #EAEAEB;
+    --smoke: #8A8A8A;
+    --hairline: rgba(201, 169, 97, 0.15);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--obsidian);
+    color: var(--pearl);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .font-display { font-family: 'Montserrat', sans-serif; letter-spacing: -0.01em; }
+  .font-editorial { font-family: 'Cormorant Garamond', serif; }
+  .tracking-widest-plus { letter-spacing: 0.22em; }
+
+  /* Film grain overlay */
+  .grain::after {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .hairline { background: var(--hairline); height: 1px; width: 100%; }
+
+  .gold-text {
+    background: linear-gradient(135deg, #D9BC78 0%, #C9A961 50%, #A8884A 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gbtn { position: relative; isolation: isolate; transition: background 200ms ease, box-shadow 200ms ease, color 200ms ease; }
+  .gbtn::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+    background: linear-gradient(135deg, #C9A961 0%, #8B7355 50%, #C9A961 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+  }
+  .gbtn:hover { background: rgba(201, 169, 97, 0.08); box-shadow: 0 0 30px rgba(201, 169, 97, 0.2); }
+
+  .gold-fill {
+    background: linear-gradient(180deg, #D6B774 0%, #C9A961 100%);
+    color: var(--obsidian);
+    transition: box-shadow 200ms ease, transform 200ms ease, background 200ms ease;
+  }
+  .gold-fill:hover { box-shadow: 0 0 40px rgba(201, 169, 97, 0.35); background: linear-gradient(180deg, #E4C684 0%, #D2B26A 100%); }
+
+  .gold-link { color: var(--gold); transition: color 200ms ease; }
+  .gold-link:hover { color: var(--antique); }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.22em; color: var(--smoke);
+  }
+  .eyebrow .accent { color: var(--gold); }
+
+  .num-tag { font-family: 'Montserrat', sans-serif; font-weight: 500; color: var(--gold); letter-spacing: 0.05em; }
+
+  .nav-blur {
+    background: rgba(10, 10, 11, 0.7);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  ::selection { background: rgba(201, 169, 97, 0.3); color: #fff; }
+
+  .ulink { position: relative; }
+  .ulink::after {
+    content: ""; position: absolute; left: 0; bottom: -3px; height: 1px; width: 100%;
+    background: var(--gold); transform: scaleX(0); transform-origin: right; transition: transform 350ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .ulink:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  .section { padding: 110px 0; }
+  @media (max-width: 768px) { .section { padding: 72px 0; } }
+
+  /* Hero portrait composition */
+  .booking-hero {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(10,10,11,0.55) 0%, rgba(10,10,11,0.35) 30%, rgba(10,10,11,0.6) 70%, rgba(10,10,11,0.98) 100%),
+      linear-gradient(90deg, rgba(10,10,11,0.92) 0%, rgba(10,10,11,0.7) 38%, rgba(10,10,11,0.35) 70%, rgba(10,10,11,0.55) 100%),
+      url('assets/anthony-portrait-dark.jpg') center 28% / cover no-repeat;
+  }
+  @media (max-width: 900px) {
+    .booking-hero {
+      background:
+        linear-gradient(180deg, rgba(10,10,11,0.78) 0%, rgba(10,10,11,0.5) 40%, rgba(10,10,11,0.99) 100%),
+        url('assets/anthony-portrait-dark.jpg') 60% 22% / cover no-repeat;
+    }
+  }
+
+  /* Calendly frame */
+  .cal-frame {
+    border: 1px solid var(--hairline);
+    background: linear-gradient(180deg, #15151b 0%, #0e0e12 100%);
+    position: relative;
+  }
+  .cal-frame .corner { position: absolute; width: 14px; height: 14px; z-index: 2; }
+  .cal-frame .corner.tl { top: 10px; left: 10px; border-left: 1px solid rgba(201,169,97,0.5); border-top: 1px solid rgba(201,169,97,0.5); }
+  .cal-frame .corner.tr { top: 10px; right: 10px; border-right: 1px solid rgba(201,169,97,0.5); border-top: 1px solid rgba(201,169,97,0.5); }
+  .cal-frame .corner.bl { bottom: 10px; left: 10px; border-left: 1px solid rgba(201,169,97,0.5); border-bottom: 1px solid rgba(201,169,97,0.5); }
+  .cal-frame .corner.br { bottom: 10px; right: 10px; border-right: 1px solid rgba(201,169,97,0.5); border-bottom: 1px solid rgba(201,169,97,0.5); }
+  .calendly-inline-widget { border-radius: 0; }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 700ms ease, transform 700ms ease; will-change: transform, opacity; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body class="grain">
+
+<!-- ============ TOP BAR ============ -->
+<div class="w-full bg-black/60 border-b border-hairline relative z-50">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10 h-9 flex items-center justify-between text-[11px] tracking-widest-plus uppercase">
+    <div class="text-smoke flex items-center gap-3">
+      <span>Operator</span>
+      <span class="text-gold/40">·</span>
+      <span>Investor</span>
+      <span class="text-gold/40">·</span>
+      <span>Advisor</span>
+    </div>
+    <a href="index.html" class="gold-link ulink">← Back to MedeirosHQ</a>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="sticky top-0 left-0 right-0 z-50 nav-blur" data-screen-label="Nav">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10 h-16 md:h-[72px] flex items-center justify-between">
+    <a href="index.html" class="font-display font-bold text-xl tracking-wide">
+      Medeiros<span class="gold-text">HQ</span>
+    </a>
+    <div class="hidden md:flex items-center gap-10 text-[13px] tracking-wider uppercase text-pearl/80">
+      <a href="index.html#ventures" class="ulink hover:text-pearl">Ventures</a>
+      <a href="index.html#thesis" class="ulink hover:text-pearl">Thesis</a>
+      <a href="#calendar" class="ulink hover:text-pearl">Schedule</a>
+    </div>
+    <a href="#calendar" class="inline-flex gold-fill rounded-sm px-5 py-2.5 text-[12px] tracking-widest-plus uppercase font-display font-semibold">
+      Pick a Time
+    </a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="booking-hero" data-screen-label="Hero">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 md:py-36 lg:py-44">
+    <div class="max-w-3xl">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-60"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
+        </span>
+        <div class="eyebrow">
+          <span>Anthony Medeiros</span>
+          <span class="text-gold/40 mx-2">·</span>
+          <span>Private Consultation</span>
+          <span class="text-gold/40 mx-2">·</span>
+          <span class="accent">30 Minutes</span>
+        </div>
+      </div>
+
+      <h1 class="font-display font-bold text-pearl leading-[0.98] tracking-[-0.02em]"
+          style="font-size: clamp(44px, 6.4vw, 92px);">
+        Book a Call.<br/>
+        Open Every <span class="font-editorial italic font-medium gold-text" style="font-weight:500;">Door.</span>
+      </h1>
+
+      <div class="mt-8 mb-10" style="width: 64px; height: 1px; background: var(--gold);"></div>
+
+      <p class="font-body text-pearl/85 leading-relaxed max-w-xl" style="font-size: clamp(16px, 1.15vw, 19px);">
+        One conversation across <span class="text-pearl">protection, capital, real estate, markets, and partnerships.</span> Tell me which room you're walking into — then pick a time below.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-4">
+        <a href="#calendar" class="gold-fill rounded-sm px-7 py-4 text-[12px] tracking-widest-plus uppercase font-display font-semibold inline-flex items-center gap-3">
+          Reserve a Time <span aria-hidden>→</span>
+        </a>
+        <a href="index.html#ventures" class="gbtn rounded-sm px-7 py-4 text-[12px] tracking-widest-plus uppercase font-display font-semibold text-pearl inline-flex items-center gap-3">
+          See the Ventures <span aria-hidden class="text-gold">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT TO EXPECT ============ -->
+<section class="bg-obsidian relative" data-screen-label="Expect">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+    <div class="hairline"></div>
+    <div class="grid md:grid-cols-3 gap-px bg-hairline border-x border-hairline">
+      <div class="reveal bg-obsidian p-10 md:p-12 flex flex-col gap-5" style="transition-delay:0ms;">
+        <div class="flex items-baseline justify-between">
+          <div class="num-tag text-[14px]">01</div>
+          <div class="eyebrow">Before</div>
+        </div>
+        <p class="font-display font-semibold text-pearl text-[21px] leading-tight">A clear read on where you are.</p>
+        <p class="text-pearl/65 text-[15px] leading-relaxed">Come with the situation, not a polished pitch. We map what's working, what's stalled, and where the leverage actually sits.</p>
+      </div>
+      <div class="reveal bg-obsidian p-10 md:p-12 flex flex-col gap-5" style="transition-delay:80ms;">
+        <div class="flex items-baseline justify-between">
+          <div class="num-tag text-[14px]">02</div>
+          <div class="eyebrow">During</div>
+        </div>
+        <p class="font-display font-semibold text-pearl text-[21px] leading-tight">The right room, the right move.</p>
+        <p class="text-pearl/65 text-[15px] leading-relaxed">Protection, capital, real estate, markets, or partnerships — we identify which ventures fit and the order to act in.</p>
+      </div>
+      <div class="reveal bg-obsidian p-10 md:p-12 flex flex-col gap-5" style="transition-delay:160ms;">
+        <div class="flex items-baseline justify-between">
+          <div class="num-tag text-[14px]">03</div>
+          <div class="eyebrow">After</div>
+        </div>
+        <p class="font-display font-semibold text-pearl text-[21px] leading-tight">A next step you can execute.</p>
+        <p class="text-pearl/65 text-[15px] leading-relaxed">You leave with a direction and a defined first move — no obligation, no pressure, just a real conversation.</p>
+      </div>
+    </div>
+    <div class="hairline"></div>
+  </div>
+</section>
+
+<!-- ============ CALENDAR ============ -->
+<section id="calendar" class="section bg-ink relative" data-screen-label="Calendar">
+  <div class="max-w-[1180px] mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+      <!-- Left rail: details -->
+      <div class="lg:col-span-4 lg:sticky lg:top-28">
+        <div class="eyebrow mb-6"><span class="accent">·</span> Schedule a Consultation</div>
+        <h2 class="font-display font-bold text-pearl leading-[1.04] tracking-tight" style="font-size: clamp(32px, 3.6vw, 48px);">
+          Pick a time that <span class="gold-text italic font-editorial font-medium">works.</span>
+        </h2>
+        <p class="mt-6 text-pearl/70 leading-relaxed text-[16px]">
+          A private 30-minute call with Anthony. Select an open slot on the right and confirm in a few clicks.
+        </p>
+
+        <div class="mt-10 space-y-5">
+          <div class="flex items-start gap-4 p-5" style="border:1px solid var(--hairline); background: rgba(28,28,34,0.4);">
+            <div class="num-tag text-[13px] mt-0.5">·</div>
+            <div>
+              <div class="font-display font-semibold text-pearl text-[15px]">30-minute call</div>
+              <div class="text-pearl/60 text-[13px] mt-1">Video or phone — your choice at booking.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 p-5" style="border:1px solid var(--hairline); background: rgba(28,28,34,0.4);">
+            <div class="num-tag text-[13px] mt-0.5">·</div>
+            <div>
+              <div class="font-display font-semibold text-pearl text-[15px]">Ontario, Canada</div>
+              <div class="text-pearl/60 text-[13px] mt-1">Times shown in your local timezone.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 p-5" style="border:1px solid var(--hairline); background: rgba(28,28,34,0.4);">
+            <div class="num-tag text-[13px] mt-0.5">·</div>
+            <div>
+              <div class="font-display font-semibold text-pearl text-[15px]">No obligation</div>
+              <div class="text-pearl/60 text-[13px] mt-1">A real conversation — not a sales call.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 pt-8 border-t border-hairline">
+          <div class="eyebrow mb-3"><span class="accent">·</span> Prefer to write first?</div>
+          <a href="index.html#inquiry" class="gold-link ulink text-[15px] font-display">Start an inquiry instead →</a>
+        </div>
+      </div>
+
+      <!-- Right: Calendly embed -->
+      <div class="lg:col-span-8">
+        <div class="cal-frame p-2.5 sm:p-3">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <!-- Calendly inline widget begin -->
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/anthmedeiroz/30min?hide_gdpr_banner=1&background_color=13131a&text_color=eaeaeb&primary_color=c9a961"
+               style="min-width:320px;height:740px;"></div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          <!-- Calendly inline widget end -->
+        </div>
+        <p class="mt-5 text-smoke text-[12px] leading-relaxed text-center">
+          Scheduling powered by Calendly. You'll receive a calendar invite and confirmation by email.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="section bg-obsidian relative overflow-hidden" data-screen-label="Closing">
+  <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.06]">
+    <div class="w-[80vw] h-[80vw] max-w-[760px] max-h-[760px] border border-gold rounded-full"></div>
+  </div>
+  <div class="relative max-w-[1100px] mx-auto px-6 lg:px-10 text-center">
+    <div class="eyebrow mb-8"><span class="accent">·</span> One conversation</div>
+    <h2 class="font-display font-bold text-pearl leading-[1.05] tracking-tight max-w-3xl mx-auto" style="font-size: clamp(34px, 4.6vw, 64px);">
+      One Conversation.<br/>
+      <span class="gold-text">Multiple Opportunities.</span>
+    </h2>
+    <div class="mt-12">
+      <a href="#calendar" class="gold-fill rounded-sm px-10 py-5 text-[13px] tracking-widest-plus uppercase font-display font-semibold inline-flex items-center gap-4">
+        Pick a Time <span aria-hidden>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="relative bg-obsidian pt-20 pb-10 border-t border-hairline" data-screen-label="Footer">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-10 pb-14">
+      <div>
+        <div class="font-display font-bold text-2xl tracking-wide mb-5">Medeiros<span class="gold-text">HQ</span></div>
+        <p class="text-pearl/70 leading-relaxed text-[15px] max-w-sm">A complete wealth ecosystem designed to help you grow, protect, and compound wealth beyond traditional advice.</p>
+      </div>
+      <div class="md:text-right">
+        <div class="eyebrow mb-4"><span class="accent">·</span> Contact</div>
+        <!--email_off--><a href="mailto:anthony@tempoinnovations.com" class="gold-link ulink text-[15px] font-display">anthony@tempoinnovations.com</a><!--/email_off-->
+      </div>
+    </div>
+
+    <div class="hairline mb-8"></div>
+
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-[11px] tracking-widest-plus uppercase text-smoke">
+      <div>© <span id="year">2026</span> MedeirosHQ · All rights reserved</div>
+      <div class="flex gap-6">
+        <a href="index.html" class="ulink hover:text-pearl">Home</a>
+        <a href="index.html#ventures" class="ulink hover:text-pearl">Ventures</a>
+        <a href="index.html#inquiry" class="ulink hover:text-pearl">Inquire</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+})();
+</script>
+
+</body>
+</html>
