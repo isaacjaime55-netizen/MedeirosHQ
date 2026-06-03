@@ -55,6 +55,7 @@ tailwind.config = {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     min-height: 100vh;
+    position: relative;
   }
   .font-display { font-family: 'Montserrat', sans-serif; letter-spacing: -0.01em; }
   .font-editorial { font-family: 'Cormorant Garamond', serif; }
@@ -104,9 +105,54 @@ tailwind.config = {
     box-shadow: 0 30px 80px rgba(0,0,0,0.45);
   }
   #JotFormIFrame-260507212346247 { display: block; width: 1px; min-width: 100%; max-width: 100%; border: none; }
+
+  /* ====== Background atmosphere ====== */
+  .page-bg {
+    position: fixed; inset: 0; z-index: -2; pointer-events: none;
+    background:
+      radial-gradient(90% 55% at 50% -8%, rgba(201,169,97,0.13) 0%, rgba(201,169,97,0) 55%),
+      radial-gradient(70% 50% at 88% 8%, rgba(40,52,74,0.45) 0%, rgba(40,52,74,0) 60%),
+      radial-gradient(60% 45% at 8% 20%, rgba(40,52,74,0.30) 0%, rgba(40,52,74,0) 60%),
+      linear-gradient(180deg, #0E0E14 0%, #0A0A0B 42%, #08080A 100%);
+  }
+  /* soft vignette to focus the centre */
+  .page-vignette {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(120% 80% at 50% 38%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.45) 100%);
+  }
+  /* faint hairline texture lines */
+  .page-rules {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.5;
+    background-image:
+      linear-gradient(90deg, rgba(201,169,97,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,169,97,0.05) 1px, transparent 1px);
+    background-size: 1px 100%, 1px 100%;
+    background-position: 18% 0, 82% 0;
+    background-repeat: no-repeat;
+  }
+  /* oversized editorial monogram behind the title */
+  .ghost-mark {
+    position: absolute; top: -26px; left: 50%; transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500;
+    font-size: clamp(170px, 26vw, 300px); line-height: 1; letter-spacing: -0.04em;
+    color: rgba(201,169,97,0.05); pointer-events: none; user-select: none; z-index: 0;
+    white-space: nowrap;
+  }
+  /* gold corner accents on the form card */
+  .card-wrap { position: relative; }
+  .card-wrap .corner { position: absolute; width: 18px; height: 18px; z-index: 3; }
+  .card-wrap .corner.tl { top: -7px; left: -7px; border-left: 1.5px solid rgba(201,169,97,0.7); border-top: 1.5px solid rgba(201,169,97,0.7); }
+  .card-wrap .corner.tr { top: -7px; right: -7px; border-right: 1.5px solid rgba(201,169,97,0.7); border-top: 1.5px solid rgba(201,169,97,0.7); }
+  .card-wrap .corner.bl { bottom: -7px; left: -7px; border-left: 1.5px solid rgba(201,169,97,0.7); border-bottom: 1.5px solid rgba(201,169,97,0.7); }
+  .card-wrap .corner.br { bottom: -7px; right: -7px; border-right: 1.5px solid rgba(201,169,97,0.7); border-bottom: 1.5px solid rgba(201,169,97,0.7); }
 </style>
 </head>
 <body class="grain">
+
+<!-- ============ BACKGROUND ATMOSPHERE ============ -->
+<div class="page-bg"></div>
+<div class="page-rules"></div>
+<div class="page-vignette"></div>
 
 <!-- ============ HEADER ============ -->
 <header class="w-full border-b border-hairline" data-screen-label="Header">
@@ -121,27 +167,41 @@ tailwind.config = {
 <!-- ============ TITLE + FORM ============ -->
 <main class="max-w-[820px] mx-auto px-5 sm:px-6 pt-12 sm:pt-16 pb-16 sm:pb-24" data-screen-label="FNA">
 
-  <div class="text-center mb-8 sm:mb-10">
-    <div class="eyebrow mb-4"><span class="accent">·</span> Tempo Life <span class="text-gold/40 mx-1">·</span> 2026</div>
-    <h1 class="font-display font-bold text-pearl leading-[1.02] tracking-[-0.01em]" style="font-size: clamp(30px, 5vw, 48px);">
-      Financial Needs <span class="font-editorial italic font-medium gold-text" style="font-weight:500;">Analysis</span>
-    </h1>
+  <div class="relative text-center mb-8 sm:mb-10 max-w-[640px] mx-auto">
+    <div class="ghost-mark" aria-hidden="true">FNA</div>
+    <div class="relative" style="z-index:1;">
+      <div class="eyebrow mb-4"><span class="accent">·</span> Tempo Life <span class="text-gold/40 mx-1">·</span> 2026</div>
+      <h1 class="font-display font-bold text-pearl leading-[1.02] tracking-[-0.01em]" style="font-size: clamp(30px, 5vw, 48px);">
+        Financial Needs <span class="font-editorial italic font-medium gold-text" style="font-weight:500;">Analysis</span>
+      </h1>
+      <p class="mt-5 font-editorial italic text-gold/90 leading-snug" style="font-size: clamp(18px, 2.4vw, 24px);">
+        A clear picture of where you stand — and where you're headed.
+      </p>
+      <p class="mt-5 text-pearl/70 leading-relaxed mx-auto max-w-[560px]" style="font-size: clamp(15px, 1.2vw, 16px);">
+        Answer a few questions about your income, household, and goals. We'll use it to build a personalized review of your protection, savings, and legacy strategy.
+      </p>
+      <div class="mt-7 mx-auto" style="width: 56px; height: 1px; background: var(--gold);"></div>
+    </div>
   </div>
 
   <!-- JotForm embed -->
-  <div class="form-card">
-    <!-- JotForm embed begin -->
-    <iframe
-      id="JotFormIFrame-260507212346247"
-      title="2026 FNA -  Anthony Medeiros"
-      allowtransparency="true"
-      allow="geolocation; microphone; camera; fullscreen; payment"
-      src="https://form.jotform.com/260507212346247"
-      frameborder="0"
-      style="min-width:100%;max-width:100%;height:539px;border:none;"
-      scrolling="no">
-    </iframe>
-    <!-- JotForm embed end -->
+  <div class="card-wrap">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+    <div class="form-card">
+      <!-- JotForm embed begin -->
+      <iframe
+        id="JotFormIFrame-260507212346247"
+        title="2026 FNA -  Anthony Medeiros"
+        allowtransparency="true"
+        allow="geolocation; microphone; camera; fullscreen; payment"
+        src="https://form.jotform.com/260507212346247"
+        frameborder="0"
+        style="min-width:100%;max-width:100%;height:539px;border:none;"
+        scrolling="no">
+      </iframe>
+      <!-- JotForm embed end -->
+    </div>
   </div>
 
 </main>
